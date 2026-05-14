@@ -1,0 +1,13 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "type": "command",
+        "comment": "Block dangerous terminal/shell commands before they execute. Add more patterns as needed.",
+        "command": "python3 .github/hooks/scripts/block-dangerous.py",
+        "windows": "python .github\\hooks\\scripts\\block-dangerous.py",
+        "timeout": 10
+      }
+    ]
+  }
+}

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VS Code Copilot Expert</title>
+    <link rel="stylesheet" href="readme.css">
+</head>
+<body>
+    <div class="page-shell">
+        <header class="hero">
+            <div>
+                <p class="eyebrow">Interactive Guide</p>
+                <h1>VS Code Copilot Expert</h1>
+                <p class="hero-copy">
+                    A navigable dashboard for understanding what you built, why each customization layer matters,
+                    and where to go next when you want tighter automation with Hooks and VS Code Tasks.
+                </p>
+                <div class="hero-actions">
+                    <a class="action-pill" href="docs/00-mental-model.md">Read the mental model</a>
+                    <a class="action-pill" href="#hooks">Jump to Hooks</a>
+                    <a class="action-pill" href="#tasks">Jump to Tasks</a>
+                </div>
+            </div>
+            <div class="hero-meta">
+                <p class="meta-label">Focus</p>
+                <ul>
+                    <li>Hooks and deterministic automation</li>
+                    <li>VS Code tasks.json workflows</li>
+                    <li>Agents, skills, instructions, MCP, and plugins</li>
+                </ul>
+            </div>
+        </header>
+
+        <div class="dashboard-shell">
+            <aside class="sidebar" aria-label="Primary">
+                <nav>
+                    <a href="#start-here">Start Here</a>
+                    <a href="#stack">Customization Stack</a>
+                    <a href="#hooks">Hooks</a>
+                    <a href="#tasks">VS Code Tasks</a>
+                    <a href="#sources">Source Map</a>
+                </nav>
+            </aside>
+
+            <main class="content">
+                <section class="toolbar panel panel--compact">
+                    <div class="search-block">
+                        <label for="dashboardSearch">Find a topic</label>
+                        <input id="dashboardSearch" type="search" placeholder="Search hooks, tasks, agents, plugins...">
+                    </div>
+                    <div class="filter-group" aria-label="Topic filters">
+                        <button type="button" class="filter-chip is-selected" data-filter="all">All</button>
+                        <button type="button" class="filter-chip" data-filter="customization">Customizations</button>
+                        <button type="button" class="filter-chip" data-filter="hooks">Hooks</button>
+                        <button type="button" class="filter-chip" data-filter="tasks">Tasks</button>
+                        <button type="button" class="filter-chip" data-filter="sources">Sources</button>
+                    </div>
+                </section>
+
+                <section id="start-here" class="panel" data-topics="overview">
+                    <p class="section-label">Start Here</p>
+                    <h2>What this artifact will do</h2>
+                    <p>
+                        This page will become the overview-first map for the project. It will summarize each layer,
+                        highlight the highest-leverage workflows, and link directly to the docs and examples already in the repo.
+                    </p>
+                    <div class="callout-grid">
+                        <article class="feature-card filterable-card" data-topics="overview customization">
+                            <h3>What your screenshots show: Agent Customizations</h3>
+                            <p>The Customizations editor is the control plane for agents, skills, instructions, hooks, MCP servers, and plugins. Open it with Chat: Open Customizations when you want to create or inspect the files behind each layer.</p>
+                            <a class="source-link" href="https://code.visualstudio.com/docs/copilot/customization/overview">Open customization overview</a>
+                        </article>
+                        <article class="feature-card filterable-card" data-topics="overview tasks">
+                            <h3>What your screenshots show: Agents window Tasks</h3>
+                            <p>The Agents window is the agent-first surface. Its Tasks dropdown is for running validation commands like builds and tests in the session context after the agent changes files.</p>
+                            <a class="source-link" href="https://code.visualstudio.com/docs/copilot/agents/agents-window">Open Agents window guide</a>
+                        </article>
+                    </div>
+                    <div class="card-grid card-grid--three">
+                        <article class="info-card filterable-card" data-topics="overview customization">
+                            <span class="info-badge">Read first</span>
+                            <h3>Mental model</h3>
+                            <p>Start with the system map so the rest of the customization layers make sense.</p>
+                            <a href="docs/00-mental-model.md">Open docs/00-mental-model.md</a>
+                        </article>
+                        <article class="info-card filterable-card" data-topics="overview hooks">
+                            <span class="info-badge">Highest leverage</span>
+                            <h3>Hooks</h3>
+                            <p>Use Hooks when you need guaranteed automation instead of guidance the model can ignore.</p>
+                            <a href="docs/05-hooks.md">Open docs/05-hooks.md</a>
+                        </article>
+                        <article class="info-card filterable-card" data-topics="overview tasks">
+                            <span class="info-badge">Native VS Code</span>
+                            <h3>Tasks</h3>
+                            <p>Use tasks.json when you want repeatable build, test, lint, and watch workflows outside the model.</p>
+                            <a href="https://code.visualstudio.com/docs/editor/tasks">Open official VS Code Tasks docs</a>
+                        </article>
+                    </div>
+                    <div class="path-strip">
+                        <article class="path-card filterable-card" data-topics="overview customization">
+                            <h3>Path 1: Learn the stack</h3>
+                            <p>Read the mental model, then layer instructions, prompt files, agents, skills, and MCP in order.</p>
+                        </article>
+                        <article class="path-card filterable-card" data-topics="overview hooks">
+                            <h3>Path 2: Harden your workflow</h3>
+                            <p>Build Hook guardrails for security, formatting, audit trails, and context injection.</p>
+                        </article>
+                        <article class="path-card filterable-card" data-topics="overview tasks">
+                            <h3>Path 3: Automate the editor</h3>
+                            <p>Use VS Code Tasks for tests, watchers, problem matchers, and compound build sequences.</p>
+                        </article>
+                    </div>
+                </section>
+
+                <section id="stack" class="panel" data-topics="customization">
+                    <p class="section-label">Customization Stack</p>
+                    <h2>From instructions to tools</h2>
+                    <p>
+                        This section will explain how instructions, agents, skills, hooks, MCP servers, plugins,
+                        and tasks fit together without duplicating the full markdown guides.
+                    </p>
+                    <div class="card-grid">
+                        <article class="info-card filterable-card" data-topics="customization">
+                            <h3>Instructions</h3>
+                            <p>Always-on or targeted rules that shape how Copilot behaves in your workspace.</p>
+                            <a href="docs/01-instructions.md">Open docs/01-instructions.md</a>
+                        </article>
+                        <article class="info-card filterable-card" data-topics="customization">
+                            <h3>Prompt files</h3>
+                            <p>Slash-command templates for repeatable tasks you want to trigger on demand.</p>
+                            <a href="docs/02-prompt-files.md">Open docs/02-prompt-files.md</a>
+                        </article>
+                        <article class="info-card filterable-card" data-topics="customization">
+                            <h3>Agents</h3>
+                            <p>Persistent personas with restricted tools, handoffs, and role-specific behavior.</p>
+                            <a href="docs/03-agents.md">Open docs/03-agents.md</a>
+                        </article>
+                        <article class="info-card filterable-card" data-topics="customization">
+                            <h3>Skills</h3>
+                            <p>Portable capabilities that can bundle instructions, resources, and scripts.</p>
+                            <a href="docs/04-skills.md">Open docs/04-skills.md</a>
+                        </article>
+                        <article class="info-card filterable-card" data-topics="customization">
+                            <h3>MCP servers</h3>
+                            <p>External tools and data sources exposed through the Model Context Protocol.</p>
+                            <a href="docs/06-mcp-servers.md">Open docs/06-mcp-servers.md</a>
+                        </article>
+                        <article class="info-card filterable-card" data-topics="customization">
+                            <h3>Plugins</h3>
+                            <p>Installable bundles that package agents, hooks, skills, prompts, and MCP together.</p>
+                            <a href="docs/07-plugins.md">Open docs/07-plugins.md</a>
+                        </article>
+                    </div>
+                </section>
+
+                <section id="hooks" class="panel" data-topics="hooks customization">
+                    <p class="section-label">Hooks</p>
+                    <h2>Deterministic guardrails</h2>
+                    <p>
+                        Hooks will get the strongest treatment here: lifecycle points, common recipes, security use cases,
+                        and direct links into the working examples.
+                    </p>
+                    <div class="feature-grid">
+                        <article class="feature-card filterable-card" data-topics="hooks">
+                            <h3>Why Hooks matter</h3>
+                            <p>Instructions guide the model. Hooks execute commands at guaranteed lifecycle points and can block unsafe actions.</p>
+                        </article>
+                        <article class="feature-card filterable-card" data-topics="hooks">
+                            <h3>What to automate first</h3>
+                            <p>Auto-formatting, command blocking, audit logs, and session context injection are the strongest early wins.</p>
+                        </article>
+                    </div>
+                    <div class="detail-grid">
+                        <details class="detail-card" open>
+                            <summary>Lifecycle points you should remember</summary>
+                            <p>SessionStart adds context, PreToolUse blocks or rewrites risky actions, PostToolUse runs validation or formatting, and Stop can force the agent to finish required work.</p>
+                        </details>
+                        <details class="detail-card">
+                            <summary>Best first Hook recipes</summary>
+                            <p>Start with a PostToolUse formatter, then a PreToolUse security gate, then SessionStart context injection, then audit logging if you need traceability.</p>
+                        </details>
+                        <details class="detail-card">
+                            <summary>Where people get burned</summary>
+                            <p>Hooks run with VS Code's permissions. Validate input, avoid hardcoded secrets, and keep the agent from editing its own hook scripts without manual approval.</p>
+                        </details>
+                    </div>
+                    <div class="link-cluster">
+                        <a class="source-link" href="docs/05-hooks.md">Hooks deep dive</a>
+                        <a class="source-link" href="examples/.github/hooks/format.json">Format hook example</a>
+                        <a class="source-link" href="examples/.github/hooks/security.json">Security hook example</a>
+                        <a class="source-link" href="examples/.github/hooks/audit.json">Audit hook example</a>
+                        <a class="source-link" href="examples/.github/hooks/context-injector.json">Context injector example</a>
+                        <a class="source-link" href="https://code.visualstudio.com/docs/copilot/customization/hooks">Official Hooks documentation</a>
+                    </div>
+                </section>
+
+                <section id="tasks" class="panel" data-topics="tasks">
+                    <p class="section-label">VS Code Tasks</p>
+                    <h2>Automation outside the model</h2>
+                    <p>
+                        This section will cover tasks.json as the native runner for builds, tests, problem matchers,
+                        background watchers, and Windows shell details.
+                    </p>
+                    <div class="card-grid card-grid--three">
+                        <article class="info-card filterable-card" data-topics="tasks">
+                            <h3>Task types</h3>
+                            <p>Use auto-detected npm, TypeScript, Gulp, and similar tasks when possible; use shell or process tasks when you need full control.</p>
+                        </article>
+                        <article class="info-card filterable-card" data-topics="tasks">
+                            <h3>Problem matchers</h3>
+                            <p>Attach built-in or custom matchers so task output feeds the Problems panel instead of staying buried in terminal text.</p>
+                        </article>
+                        <article class="info-card filterable-card" data-topics="tasks">
+                            <h3>Windows details</h3>
+                            <p>On PowerShell, quoting and escaping matter. Prefer command plus args over one large shell string when you can.</p>
+                        </article>
+                    </div>
+                    <div class="detail-grid">
+                        <details class="detail-card" open>
+                            <summary>How Tasks fit with Copilot</summary>
+                            <p>Use Copilot customizations to shape agent behavior. Use tasks.json to run build, test, lint, watch, and validation workflows in the editor or Agents window regardless of model behavior.</p>
+                        </details>
+                        <details class="detail-card">
+                            <summary>What to learn first</summary>
+                            <p>Start with task types, groups, and presentation. Then learn dependsOn, runOptions, and problem matchers. Only after that should you spend time on custom multiline matchers or background-watch tasks.</p>
+                        </details>
+                        <details class="detail-card">
+                            <summary>Windows-specific guidance</summary>
+                            <p>Prefer a command plus args array. If you must use PowerShell shell strings, be explicit with quoting. For automation-wide behavior, use terminal.integrated.automationProfile.windows or options.shell.</p>
+                        </details>
+                    </div>
+                    <div class="link-cluster">
+                        <a class="source-link" href="https://code.visualstudio.com/docs/editor/tasks">Official VS Code Tasks guide</a>
+                        <a class="source-link" href="https://code.visualstudio.com/docs/reference/tasks-appendix">tasks.json schema appendix</a>
+                    </div>
+                </section>
+
+                <section id="sources" class="panel" data-topics="sources">
+                    <p class="section-label">Source Map</p>
+                    <h2>Where the dashboard pulls from</h2>
+                    <p>
+                        The final artifact will surface local docs and examples as the source of truth, plus targeted links
+                        to official Microsoft documentation where the repo does not yet have its own guide.
+                    </p>
+                    <div class="source-columns">
+                        <div>
+                            <h3>Local docs</h3>
+                            <ul class="source-list">
+                                <li><a href="README.md">README.md</a></li>
+                                <li><a href="docs/00-mental-model.md">docs/00-mental-model.md</a></li>
+                                <li><a href="docs/08-best-practices.md">docs/08-best-practices.md</a></li>
+                                <li><a href="examples/.github/copilot-instructions.md">examples/.github/copilot-instructions.md</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>Official references</h3>
+                            <ul class="source-list">
+                                <li><a href="https://code.visualstudio.com/docs/copilot/customization/overview">Copilot customization overview</a></li>
+                                <li><a href="https://code.visualstudio.com/docs/copilot/customization/hooks">Hooks documentation</a></li>
+                                <li><a href="https://code.visualstudio.com/docs/editor/tasks">VS Code Tasks</a></li>
+                                <li><a href="https://code.visualstudio.com/docs/copilot/agents/agents-window">Agents window</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="readme.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "type": "command",
+        "comment": "Append every tool invocation to .copilot-audit.jsonl for compliance/debugging.",
+        "command": "python3 .github/hooks/scripts/audit-log.py",
+        "windows": "python .github\\hooks\\scripts\\audit-log.py",
+        "timeout": 5
+      }
+    ]
+  }
+}

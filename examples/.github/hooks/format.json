@@ -1,0 +1,13 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "type": "command",
+        "comment": "Run Prettier on any file the agent edits. Falls back gracefully if prettier not installed.",
+        "command": "npx --yes prettier --write \"$TOOL_INPUT_FILE_PATH\" 2>/dev/null || true",
+        "windows": "npx --yes prettier --write \"%TOOL_INPUT_FILE_PATH%\" 2>NUL || exit 0",
+        "timeout": 20
+      }
+    ]
+  }
+}

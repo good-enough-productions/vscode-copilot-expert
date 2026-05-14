@@ -1,0 +1,13 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "type": "command",
+        "comment": "Inject dynamic project context at the start of every agent session.",
+        "command": "python3 .github/hooks/scripts/inject-context.py",
+        "windows": "python .github\\hooks\\scripts\\inject-context.py",
+        "timeout": 10
+      }
+    ]
+  }
+}
